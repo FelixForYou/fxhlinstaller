@@ -1,0 +1,335 @@
+:root {
+    --fxhl-blue: #1769e0;
+    --fxhl-blue-dark: #0f4fb6;
+    --fxhl-blue-soft: #eef5ff;
+    --fxhl-border: #dbe6f5;
+    --fxhl-text: #172033;
+    --fxhl-muted: #667085;
+    --fxhl-bg-image: none;
+    --fxhl-overlay: 18%;
+}
+
+html, body {
+    background: #f4f7fb !important;
+    color: var(--fxhl-text);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: var(--fxhl-bg-image) center / cover no-repeat fixed;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(244, 247, 251, calc(var(--fxhl-overlay) / 100));
+    pointer-events: none;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+#app h1, #app h2, #app h3, #app h4,
+.content-wrapper h1, .content-wrapper h2, .content-wrapper h3 {
+    color: var(--fxhl-text) !important;
+    letter-spacing: -0.015em;
+}
+
+#app form > div:first-child {
+    border: 1px solid var(--fxhl-border) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 14px 36px rgba(31, 58, 94, 0.12) !important;
+}
+
+#app input, #app select, #app textarea,
+.content-wrapper input, .content-wrapper select, .content-wrapper textarea {
+    border-radius: 8px !important;
+    border-color: #cfdbea !important;
+    transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+#app input:focus, #app select:focus, #app textarea:focus,
+.content-wrapper input:focus, .content-wrapper select:focus, .content-wrapper textarea:focus {
+    border-color: var(--fxhl-blue) !important;
+    box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.14) !important;
+    outline: 0 !important;
+}
+
+button, .btn, a.btn, [role="button"] {
+    transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, opacity .16s ease !important;
+}
+
+button:hover, .btn:hover, a.btn:hover, [role="button"]:hover {
+    transform: translateY(-2px);
+}
+
+button:active, .btn:active, a.btn:active, [role="button"]:active {
+    transform: translateY(0) scale(.98);
+}
+
+.btn-primary, button[type="submit"], #app button[type="submit"] {
+    background: var(--fxhl-blue) !important;
+    border-color: var(--fxhl-blue) !important;
+    color: #fff !important;
+    box-shadow: 0 6px 14px rgba(23, 105, 224, 0.22);
+}
+
+.btn-primary:hover, button[type="submit"]:hover, #app button[type="submit"]:hover {
+    background: var(--fxhl-blue-dark) !important;
+    border-color: var(--fxhl-blue-dark) !important;
+}
+
+.fxhl-light-surface {
+    background: #fff !important;
+    border-color: var(--fxhl-border) !important;
+    color: var(--fxhl-text) !important;
+}
+
+.fxhl-soft-surface {
+    background: #f6f9fe !important;
+    border-color: var(--fxhl-border) !important;
+    color: var(--fxhl-text) !important;
+}
+
+.fxhl-dark-text, .fxhl-light-surface p, .fxhl-light-surface span:not(.label), .fxhl-light-surface label {
+    color: var(--fxhl-text) !important;
+}
+
+.fxhl-login-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 1px 0;
+}
+
+.fxhl-action-button {
+    appearance: none;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid var(--fxhl-blue);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--fxhl-blue);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.fxhl-action-button.fxhl-primary {
+    background: var(--fxhl-blue);
+    color: #fff;
+}
+
+.fxhl-action-button:hover {
+    box-shadow: 0 7px 16px rgba(23, 105, 224, 0.18);
+}
+
+.fxhl-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background: rgba(15, 23, 42, .54);
+    animation: fxhlFadeIn .16s ease both;
+}
+
+.fxhl-modal {
+    width: min(620px, 100%);
+    max-height: calc(100vh - 36px);
+    overflow: auto;
+    border: 1px solid var(--fxhl-border);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--fxhl-text);
+    box-shadow: 0 22px 70px rgba(15, 23, 42, .24);
+    animation: fxhlModalIn .2s ease both;
+}
+
+.fxhl-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--fxhl-border);
+}
+
+.fxhl-modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.fxhl-modal-close {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--fxhl-blue-soft);
+    color: var(--fxhl-blue-dark);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.fxhl-modal-body {
+    padding: 20px;
+}
+
+.fxhl-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.fxhl-field-full {
+    grid-column: 1 / -1;
+}
+
+.fxhl-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: #344054;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.fxhl-field input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #cfdbea;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--fxhl-text);
+}
+
+.fxhl-submit {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 18px;
+    border: 1px solid var(--fxhl-blue);
+    border-radius: 8px;
+    background: var(--fxhl-blue);
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.fxhl-error-box, .fxhl-info-box {
+    margin-bottom: 14px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.fxhl-error-box {
+    border: 1px solid #fecaca;
+    background: #fff1f2;
+    color: #9f1239;
+}
+
+.fxhl-info-box {
+    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+.fxhl-order-view {
+    text-align: center;
+}
+
+.fxhl-amount {
+    margin: 8px 0 14px;
+    color: var(--fxhl-blue-dark);
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.fxhl-qr {
+    display: inline-flex;
+    min-width: 250px;
+    min-height: 250px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid var(--fxhl-border);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.fxhl-qr img, .fxhl-qr canvas {
+    max-width: 100%;
+    height: auto !important;
+}
+
+.fxhl-status {
+    margin-top: 14px;
+    color: var(--fxhl-muted);
+    font-size: 13px;
+}
+
+.fxhl-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 110000;
+    width: min(380px, calc(100vw - 40px));
+    padding: 14px 16px;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--fxhl-blue);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--fxhl-text);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .18);
+    animation: fxhlToastIn .24s ease both;
+}
+
+.fxhl-toast.success { border-left-color: #16a34a; }
+.fxhl-toast.warning { border-left-color: #d97706; }
+.fxhl-toast.error { border-left-color: #dc2626; }
+.fxhl-toast.fxhl-leave { animation: fxhlToastOut .22s ease both; }
+
+.main-header .navbar, .main-header .logo {
+    background: var(--fxhl-blue) !important;
+}
+
+.main-sidebar, .skin-blue .main-sidebar {
+    background: #12233f !important;
+}
+
+.content-wrapper, .right-side {
+    background: #f4f7fb !important;
+}
+
+.box {
+    border-top-color: var(--fxhl-blue) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 18px rgba(31, 58, 94, .08) !important;
+}
+
+@keyframes fxhlFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fxhlModalIn { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes fxhlToastIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+@keyframes fxhlToastOut { to { opacity: 0; transform: translateY(-8px); } }
+
+@media (max-width: 640px) {
+    .fxhl-login-actions, .fxhl-form-grid { grid-template-columns: 1fr; }
+    .fxhl-field-full { grid-column: auto; }
+    .fxhl-modal-body { padding: 16px; }
+    .fxhl-amount { font-size: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
